@@ -1,0 +1,16 @@
+name: java_workflow
+on: workflow_dispatch
+jobs:
+  jobs1:
+    runs-on: ubuntu-latest
+    steps:
+     - name: clone_repo
+       uses: actions/checkout@v4
+     - name: install jave
+       uses: actions/setup-java@v4
+       with:
+         distribution: 'temurin'
+         java-version: '21'
+         cache: 'maven'
+     - name: build the java code
+       run: mvn clean install package
